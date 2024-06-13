@@ -1,5 +1,6 @@
 import { Container, VStack, Heading, Box, SimpleGrid, Stat, StatLabel, StatNumber, StatHelpText, StatArrow } from "@chakra-ui/react";
 import DailyGenerationGraph from "../components/DailyGenerationGraph";
+import MonthlyGenerationGraph from "../components/MonthlyGenerationGraph";
 import hourlyGenerationData from "../data/hourlyGenerationData";
 
 const calculateDailyTotalGeneration = (data) => {
@@ -79,6 +80,12 @@ const Index = () => {
             시간대별 발전량 및 누적 발전량
           </Heading>
           <DailyGenerationGraph />
+        </Box>
+        <Box p={5} shadow="md" borderWidth="1px">
+          <Heading as="h2" size="lg" textAlign="center" mb={4}>
+            월간 발전량 및 누적 발전량
+          </Heading>
+          <MonthlyGenerationGraph />
         </Box>
       </VStack>
     </Container>
