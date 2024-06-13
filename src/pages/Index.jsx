@@ -1,4 +1,11 @@
 import { Container, VStack, Heading, Box, SimpleGrid, Stat, StatLabel, StatNumber, StatHelpText, StatArrow } from "@chakra-ui/react";
+import hourlyGenerationData from "../data/hourlyGenerationData";
+
+const calculateDailyTotalGeneration = (data) => {
+  return data.reduce((total, entry) => total + entry.generation, 0);
+};
+
+const dailyTotalGeneration = calculateDailyTotalGeneration(hourlyGenerationData);
 
 const Index = () => {
   return (
@@ -46,6 +53,12 @@ const Index = () => {
                 <StatArrow type="increase" />
                 2.34%
               </StatHelpText>
+            </Stat>
+          </Box>
+          <Box p={5} shadow="md" borderWidth="1px">
+            <Stat>
+              <StatLabel>일일 총 발전량</StatLabel>
+              <StatNumber>{dailyTotalGeneration} kWh</StatNumber>
             </Stat>
           </Box>
         </SimpleGrid>
