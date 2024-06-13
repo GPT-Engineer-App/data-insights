@@ -5,7 +5,12 @@ const calculateDailyTotalGeneration = (data) => {
   return data.reduce((total, entry) => total + entry.generation, 0);
 };
 
+const calculateDailyAverageGeneration = (data) => {
+  return data.reduce((total, entry) => total + entry.generation, 0) / data.length;
+};
+
 const dailyTotalGeneration = calculateDailyTotalGeneration(hourlyGenerationData);
+const dailyAverageGeneration = calculateDailyAverageGeneration(hourlyGenerationData);
 
 const Index = () => {
   return (
@@ -59,6 +64,12 @@ const Index = () => {
             <Stat>
               <StatLabel>일일 총 발전량</StatLabel>
               <StatNumber>{dailyTotalGeneration} kWh</StatNumber>
+            </Stat>
+          </Box>
+          <Box p={5} shadow="md" borderWidth="1px">
+            <Stat>
+              <StatLabel>일일 평균 발전량</StatLabel>
+              <StatNumber>{dailyAverageGeneration.toFixed(2)} kWh</StatNumber>
             </Stat>
           </Box>
         </SimpleGrid>
